@@ -12,7 +12,7 @@ function searchBarForm() {
 
     const fetchURL = `https://rickandmortyapi.com/api/character/?&name=${searchQuery}`;
 
-    fetchCharacters();
+    fetchCharactersAndRender(fetchURL);
   });
 }
 
