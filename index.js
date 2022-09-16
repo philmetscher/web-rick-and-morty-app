@@ -13,10 +13,13 @@ const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 
 // States
-let maxPage = 1;
+let maxPage = 50;
 let page = 1;
 let searchQuery = '';
 
-setPaginationIndex(4, 50);
-refreshPaginationIndex(prevButton, 3, 50);
-refreshPaginationIndex(nextButton, 5, 50);
+//first set of the index
+setPaginationIndex(1, maxPage);
+
+//refresh pagination onclick
+refreshPaginationIndex(prevButton, maxPage);
+refreshPaginationIndex(nextButton, maxPage);
