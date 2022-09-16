@@ -10,10 +10,7 @@ function searchBarForm() {
     const values = Object.fromEntries(formData);
     let searchQuery = values.query;
 
-    console.log(searchQuery);
-
     const fetchURL = `https://rickandmortyapi.com/api/character/?&name=${searchQuery}`;
-    console.log(fetchURL);
 
     fetchCharacters();
   });
