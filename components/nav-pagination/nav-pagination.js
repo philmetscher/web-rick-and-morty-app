@@ -9,7 +9,7 @@ function refreshPaginationIndex(target, pages) {
         page--;
         setPaginationIndex(page, pages);
       }
-    } else if (!(page > pages)) {
+    } else if (!(page >= pages)) {
       page++;
       setPaginationIndex(page, pages);
     }

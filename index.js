@@ -1,4 +1,5 @@
 import {
+  page,
   setPaginationIndex,
   refreshPaginationIndex,
 } from './components/nav-pagination/nav-pagination.js';
@@ -14,11 +15,10 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 
 // States
 let maxPage = 50;
-let page = 1;
 let searchQuery = '';
 
 //first set of the index
-setPaginationIndex(1, maxPage);
+setPaginationIndex(page, maxPage);
 
 //refresh pagination onclick
 refreshPaginationIndex(prevButton, maxPage);
