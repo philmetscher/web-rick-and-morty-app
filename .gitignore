@@ -1,6 +1,6 @@
-.codesandbox/workspace.json
-.sandbox.config.json
-.vscode
 **/.DS_Store
 */.DS_Store
 .DS_Store
+.codesandbox/workspace.json
+.sandbox.config.json
+.vscode
