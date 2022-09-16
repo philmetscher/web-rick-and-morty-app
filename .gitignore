@@ -3,3 +3,4 @@
 .DS_Store
 .codesandbox/workspace.json
 .sandbox.config.json
+.vscode
