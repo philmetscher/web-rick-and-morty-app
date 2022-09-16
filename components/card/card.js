@@ -1,5 +1,3 @@
-export default createCharacterCard;
-
 function createCharacterCard(characterObject) {
   const card = document.createElement('li');
   card.classList.add('card');
@@ -29,3 +27,5 @@ function createCharacterCard(characterObject) {
 
   return card;
 }
+
+export default createCharacterCard;
