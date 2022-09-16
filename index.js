@@ -1,3 +1,4 @@
+import {searchBarForm} from './components/search-bar/search-bar.js';
 import {
   page,
   setPaginationIndex,
@@ -17,6 +18,7 @@ const nextButton = document.querySelector('[data-js="button-next"]');
 let maxPage = 50;
 let searchQuery = '';
 
+searchBarForm();
 //first set of the index
 setPaginationIndex(page, maxPage);
 
