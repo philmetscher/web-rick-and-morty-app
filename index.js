@@ -1,3 +1,5 @@
+// import createCharacterCard
+
 console.clear();
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
@@ -27,10 +29,26 @@ function fetchCharacters() {
 }
 
 function processData(data) {
-  console.log(data.length);
-  console.log(data[0].image);
-  console.log(data[0].name);
-  console.log(data[0].status);
-  console.log(data[0].type);
-  console.log(data[0].episode.length);
+  const characters = data.map(character => {
+    const characterObj = {
+      source: character.image,
+      name: character.name,
+      info: {
+        status: character.status,
+        type: character.type,
+        occurrences: character.episode.length,
+      },
+    };
+    return characterObj;
+  });
+  console.log(characters);
+  //renderCards(characters);
+}
+
+function renderCards(charactersArray) {
+  cardContainer.innerHTML = '';
+  charactersArray.forEach(character => {
+    const card = createCharacterCard(character); // give charac obj or single parameters?
+    cardContainer.append(card);
+  });
 }
