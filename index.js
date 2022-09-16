@@ -1,5 +1,4 @@
-// import createCharacterCard from ""
-// import
+import createCharacterCard from './components/card.js';
 
 console.clear();
 
