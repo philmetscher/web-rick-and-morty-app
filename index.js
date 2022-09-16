@@ -1,4 +1,5 @@
-// import createCharacterCard
+// import createCharacterCard from ""
+// import
 
 console.clear();
 
@@ -17,17 +18,23 @@ let maxPage = 1;
 let page = 1;
 let searchQuery = '';
 
-fetchCharacters();
+// dummy URL:
+const firstFetch = 'https://rickandmortyapi.com/api/character';
+fetchCharactersAndRender(firstFetch);
 
 /* --- fetch --- */
-function fetchCharacters() {
-  fetch('https://rickandmortyapi.com/api/character')
-    .then(response => response.json())
-    .then(apiData => {
-      processData(apiData.results);
-    });
+async function fetchCharactersAndRender(fetchURL) {
+  try {
+    const response = await fetch(fetchURL);
+    const data = await response.json();
+    const apiData = data.results;
+    processData(apiData);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
+// takes apiData.results (character array from API)
 function processData(data) {
   const characters = data.map(character => {
     const characterObj = {
@@ -48,7 +55,7 @@ function processData(data) {
 function renderCards(charactersArray) {
   cardContainer.innerHTML = '';
   charactersArray.forEach(character => {
-    const card = createCharacterCard(character); // give charac obj or single parameters?
+    const card = createCharacterCard(character);
     cardContainer.append(card);
   });
 }
