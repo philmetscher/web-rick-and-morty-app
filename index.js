@@ -1,7 +1,6 @@
-import createCharacterCard from './components/card.js';
+import createCharacterCard from './components/card/card.js';
 import {searchBarForm} from './components/search-bar/search-bar.js';
 import {
-  page,
   setPaginationIndex,
   refreshPaginationIndex,
 } from './components/nav-pagination/nav-pagination.js';
@@ -16,18 +15,41 @@ const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 
 // States
+let page = 1;
 let maxPage = 50;
 let searchQuery = '';
 
-// dummy URL:
-const firstFetch = 'https://rickandmortyapi.com/api/character';
+// fetch once, when page is loaded
+const firstFetch = 'https://rickandmortyapi.com/api/character'; // dummy URL
 fetchCharactersAndRender(firstFetch);
 
-/* --- fetch --- */
+searchQuery = searchBarForm(searchQuery, fetchCharactersAndRender);
+
+//first set of the index
+setPaginationIndex(page, maxPage);
+//refresh pagination onclick
+refreshPaginationIndex(
+  prevButton,
+  page,
+  maxPage,
+  searchQuery,
+  fetchCharactersAndRender,
+);
+refreshPaginationIndex(
+  nextButton,
+  page,
+  maxPage,
+  searchQuery,
+  fetchCharactersAndRender,
+);
+
+/* --- functions --- */
+// fetch
 async function fetchCharactersAndRender(fetchURL) {
   try {
     const response = await fetch(fetchURL);
     const data = await response.json();
+    console.log(data);
     const apiData = data.results;
     processData(apiData);
   } catch (error) {
@@ -49,8 +71,7 @@ function processData(data) {
     };
     return characterObj;
   });
-  console.log(characters);
-  //renderCards(characters);
+  renderCards(characters);
 }
 
 function renderCards(charactersArray) {
@@ -60,11 +81,3 @@ function renderCards(charactersArray) {
     cardContainer.append(card);
   });
 }
-
-searchBarForm();
-//first set of the index
-setPaginationIndex(page, maxPage);
-
-//refresh pagination onclick
-refreshPaginationIndex(prevButton, maxPage);
-refreshPaginationIndex(nextButton, maxPage);
