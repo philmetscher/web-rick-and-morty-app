@@ -23,7 +23,7 @@ let searchQuery = '';
 const firstFetch = 'https://rickandmortyapi.com/api/character'; // dummy URL
 fetchCharactersAndRender(firstFetch);
 
-searchQuery = searchBarForm(searchQuery, fetchCharactersAndRender);
+searchBarForm(searchQuery, fetchCharactersAndRender);
 
 //first set of the index
 setPaginationIndex(page, maxPage);

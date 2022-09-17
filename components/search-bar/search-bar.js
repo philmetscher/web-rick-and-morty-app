@@ -8,9 +8,8 @@ function searchBarForm(searchQuery, fetchCallback) {
 
     const formData = new FormData(form);
     const values = Object.fromEntries(formData);
-    searchQuery = `name=${values.query}`;
-    console.log(searchQuery);
 
+    searchQuery = `name=${values.query}`;
     const fetchURL = `https://rickandmortyapi.com/api/character/?&${searchQuery}`;
     fetchCallback(fetchURL);
   });

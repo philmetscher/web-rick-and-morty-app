@@ -18,9 +18,8 @@ function refreshPaginationIndex(
       page++;
       setPaginationIndex(page, pages);
     }
-    console.log('before query update: ' + searchQuery);
-    searchQuery = searchQuery + `&page=${page}`;
-    console.log('after query update: ' + searchQuery);
+
+    searchQuery = `page=${page}`;
 
     const fetchURL = `https://rickandmortyapi.com/api/character/?${searchQuery}`;
     fetchCallback(fetchURL);
